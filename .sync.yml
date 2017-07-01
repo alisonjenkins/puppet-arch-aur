@@ -1,0 +1,62 @@
+---
+.gitignore:
+  paths:
+    - "*.orig"
+    - "*.bak"
+    - "*.old"
+    - "*.gem"
+    - "*.rbc"
+    - ".rspec_system"
+    - ".vagrant"
+    - ".yardoc"
+    - "InstalledFiles"
+    - "_yardoc"
+    - "coverage"
+    - "doc/"
+    - "lib/bundler/man"
+    - "pkg"
+    - "vendor/"
+    - "rdoc"
+    - "spec/reports"
+    - "test/version_tmp"
+    - "tmp"
+    - "/.idea/"
+    - "/.vscode/"
+    - ".config"
+
+.gitattributes:
+  # As this is for Windows, ERB files can be either LF or CRLF
+  exclude:
+  - "*.erb"
+
+Gemfile:
+  optional:
+    ':system_tests':
+      - gem: beaker-windows
+        version: '~> 0.6'
+    ':development':
+      - gem: rototiller
+        version: '~> 1.0'
+Rakefile:
+  unmanaged: true
+spec/spec_helper.rb:
+  unmanaged: true
+appveyor.yml:
+  matrix_extras:
+    - PUPPET_GEM_VERSION: 4.2.3
+      RUBY_VER: 21-x64
+  test_script:
+    - 'bundle exec rspec spec/unit -fd -b'
+MAINTAINERS.md:
+  maintainers:
+    - "Puppet Windows Team `windows |at| puppet |dot| com`"
+NOTICE:
+  copyright_holders:
+    - name: 'Rich Siegel, Paul Morgan'
+      begin: 2012
+      end: 2014
+    - name: 'RealDimensions Software, LLC & original authors/contributors from https://github.com/chocolatey/puppet-chocolatey'
+      begin: 2014
+      end: 2016
+    - name: 'Puppet, Inc.'
+      begin: 2016
